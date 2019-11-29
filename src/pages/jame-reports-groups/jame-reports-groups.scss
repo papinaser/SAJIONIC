@@ -1,0 +1,36 @@
+page-jame-reports-groups {
+  ion-content {
+    background-color: #fff;
+    ion-label,dp-date-picker,span{
+      color: #000;
+      font-weight: bolder;
+    }
+    .datePickerOnTop{
+      display: flex;
+      align-items: center;
+    }
+    .hide{
+      display: none;
+    }
+
+    &::after {
+      content: "";
+      background: url("../../assets/img/bg.jpg") no-repeat;
+      background-size: cover;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
+    }
+    .list {
+      background: transparent;
+
+      ion-item {
+        background: transparent;
+      }
+    }
+
+  }
+}

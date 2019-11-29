@@ -1,0 +1,65 @@
+<ion-header>
+ <page-header pageTitle="منوی اصلی"></page-header>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 col-md-2 col-sm-4>
+        <ion-card tappable (click)="ShowMenu('tdmsLog')">
+          <img src="../../assets/img/dashboard/data.svg"/>
+          <div class="card-title">ثبت اطلاعات</div>
+          <div class="card-subtitle">ثبت و نگهداری مدیریت داده های فنی</div>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-6 col-md-2 col-sm-4>
+        <ion-card>
+          <img src="../../assets/img/dashboard/dashboard.svg"/>
+          <div class="card-title">داشبورد کارشناسان</div>
+          <div class="card-subtitle">آنالیز دیتا و داشبورد دادهای فنی</div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6 col-md-2 col-sm-4>
+        <ion-card tappable (click)="ShowMenu('pbiDashboard')">
+          <img src="../../assets/img/dashboard/advancedDashboard.svg"/>
+          <div class="card-title">داشبورد مدیران</div>
+          <div class="card-subtitle">داشبورد های پیشرفته و تعاملی</div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6 col-md-2 col-sm-4>
+        <ion-card tappable (click)="ShowMenu('jameReports')">
+          <img src="../../assets/img/dashboard/report.svg"/>
+          <div class="card-title">گزارشات جامع تولید</div>
+          <div class="card-subtitle">گزارشات مدیریتی داده های سیستم</div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6 col-md-2 col-sm-4>
+        <ion-card>
+          <img src="../../assets/img/dashboard/sign.svg"/>
+          <div class="card-title">امضای اسناد</div>
+          <div class="card-subtitle">بررسی و تائید داده های ثبت شده</div>
+        </ion-card>
+      </ion-col>
+      <ion-col *ngIf="false && isUserHasPermission('carRequest')" col-6 col-md-2 col-sm-4>
+        <ion-card  tappable (click)="ShowMenu('carRequest')">
+          <img src="../../assets/img/dashboard/carRequest.svg"/>
+          <div class="card-title">درخواست خودرو</div>
+          <div class="card-subtitle">درخواست خودرو جهت ماموریت از واحد ترابری</div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6 col-md-2 col-sm-4>
+        <ion-card>
+          <img src="../../assets/img/dashboard/xml.svg"/>
+          <div class="card-title">خروجی XML</div>
+          <div class="card-subtitle">گزارش از سیستم به صورت xml</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-title>کلیه حقوق این سامانه برای مدیریت نظارت بر تولید نفت و گاز شرکت ملی نفت ایران محفوط است</ion-title>
+</ion-footer>

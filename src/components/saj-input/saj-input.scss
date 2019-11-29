@@ -1,0 +1,10 @@
+saj-input {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  ion-item {
+    max-width: 100%;
+    border: 1px solid map_get($colors, darken);
+  }
+
+}

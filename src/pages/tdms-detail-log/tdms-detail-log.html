@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button ion-button clear icon-only (click)="onBack()"><ion-icon name="arrow-round-forward"></ion-icon></button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-left outline color="darken" (click)="onSubmit()">تائید <ion-icon name="checkmark"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="modal">
+  <form ngForm (ngSubmit)="onSubmit()">
+  <ion-row id="detailParams" *ngIf="model?.detailFields">
+    <ion-col *ngFor="let fld of model.detailFields" col-12 col-sm-6 col-md-4>
+      <saj-input [model]="fld" [dataSource]="model.dataSource" [logFormModel]="model.logFormModel" [token]="model.token" *ngIf="fld.name!=='id'">
+      </saj-input>
+    </ion-col>
+  </ion-row>
+  </form>
+</ion-content>

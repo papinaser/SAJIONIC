@@ -1,0 +1,11 @@
+<div *ngIf="enable" type="button" (click)="taggleActive()" class="collapsible" [class.active]="active">
+  <span>{{title}}</span>
+  <span *ngIf="showDetailActions" class="gridActions">
+    <button type="button" ion-button clear icon-only (click)="onDetailActionClick($event,'add')"><ion-icon name="add-circle"></ion-icon></button>
+    <button type="button" ion-button clear icon-only (click)="onDetailActionClick($event,'edit')"><ion-icon name="create"></ion-icon></button>
+    <button type="button" ion-button clear icon-only (click)="onDetailActionClick($event,'del')"><ion-icon name="trash"></ion-icon></button>
+  </span>
+</div>
+<div [class.content]="enable" [class.block]="enable && active">
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,7 @@
+{
+  "name": "SAJ ESP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

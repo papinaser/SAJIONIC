@@ -1,0 +1,112 @@
+<!--
+  Generated template for the CarRequestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          منظور از استفاده
+        </ion-label>
+        <ion-input [(ngModel)]="carRequest.UsePurpose" name="UsePurpose">
+
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          نوع خودرو
+        </ion-label>
+        <ion-select [(ngModel)]="carRequest.CarTypeId" name="CarTypeId">
+          <ion-option *ngFor="let ct of carTypes" [value]="ct.key">{{ct.value}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          تاریخ شروع
+        </ion-label>
+        <ion-input [(ngModel)]="carRequest.MissionStartDate" name="MissionStartDate">
+
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          ساعت شروع
+        </ion-label>
+        <ion-input [(ngModel)]="carRequest.MissionStartTime" name="MissionStartTime">
+
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          تاریخ پایان
+        </ion-label>
+        <ion-input [(ngModel)]="carRequest.MissionEndDate" name="MissionEndDate">
+
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          ساعت پایان
+        </ion-label>
+        <ion-input [(ngModel)]="carRequest.MissionEndTime" name="MissionEndTime">
+
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          مقاصد
+        </ion-label>
+        <ion-select [(ngModel)]="carRequest.Locations" name="Locations" multiple="true">
+          <ion-option *ngFor="let loc of locations" [value]="loc.key">{{loc.value}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          جرکت از خانه؟
+        </ion-label>
+        <ion-checkbox [(ngModel)]="carRequest.MoveFromHome" name="MoveFromHome">
+
+        </ion-checkbox>
+      </ion-item>
+      <div class="checkVisible" *ngIf="carRequest.MoveFromHome">
+      <ion-item>
+        <ion-label>
+          آدرس متقاضی
+        </ion-label>
+        <ion-input [(ngModel)]="carRequest.RequesterAddress" name="RequesterAddress">
+
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          تلفن تماس
+        </ion-label>
+        <ion-input [(ngModel)]="carRequest.RequesterPhone" name="RequesterPhone">
+
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          نام متقاضی
+        </ion-label>
+        <ion-input [(ngModel)]="carRequest.RequetersName" name="RequetersName">
+
+        </ion-input>
+      </ion-item>
+      </div>
+    </ion-list>
+      <button ion-button type="submit" [disabled]="!form.valid" block icon-left>
+        <ion-icon name="checkmark-circle"></ion-icon>ذخیره</button>
+  </form>
+</ion-content>

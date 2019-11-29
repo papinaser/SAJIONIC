@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>انتخاب فرم لاگ و نوع داده</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="modal">
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+<ion-list>
+  <ion-item>
+    <ion-label>فرم لاگ</ion-label>
+    <ionic-selectable
+      #portComponent
+      item-content
+      name="selectedRoykard"
+      [(ngModel)]="selectedRoykard"
+      searchPlaceholder="جستجو"
+      [focusSearchbar]="true"
+      searchFailText="آیتمی پیدا نشد"
+      [items]="roykardConfigs"
+      itemValueField="value"
+      itemTextField="label"
+      [canSearch]="true"
+      (onChange)="roykardSelected($event)">
+    </ionic-selectable>
+
+  </ion-item>
+  <ion-item *ngIf="forReport">
+    <ion-label>نوع داده</ion-label>
+    <ion-select okText="انتخاب" cancelText="لغو" [(ngModel)]="selectedSetTypeItemId" name="selectedSetTypeItemId">
+      <ion-option *ngFor="let sti of setTypeItems" [value]="sti.value">{{sti.label}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+  <ion-footer>
+  <ion-row>
+    <ion-col>
+      <button ion-button [disabled]="!isFormValid()" type="submit" color="primary" block>تائید</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button type="button" color="danger" (click)="onCancel()" block>لغو</button>
+    </ion-col>
+  </ion-row>
+  </ion-footer>
+</form>
+</ion-content>

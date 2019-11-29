@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar hideBackButton class="noBackground">
+    <ion-buttons left>
+      <button ion-button clear icon-only (click)="onBack()"><ion-icon name="arrow-round-forward"></ion-icon></button>
+    </ion-buttons>
+    <ion-title>جزئیات و گزارشات لاگهای : {{model?.roykard.value}} </ion-title>
+    <ion-item class="none">
+      <ion-label>تعداد در صفحه</ion-label>
+      <ion-select #selectPageSize
+                  okText="تائید"
+                  cancelText="لغو"
+                  [(ngModel)]="pageSize"  (ngModelChange)="onPageSizeChanged(pageSize)">
+        <ion-option value="20" [selected]="true">20</ion-option>
+        <ion-option value="25">25</ion-option>
+        <ion-option value="50">50</ion-option>
+        <ion-option value="100">100</ion-option>
+        <ion-option value="150">150</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="none" *ngIf="yearRange">
+      <ion-label>فیلتر بر اساس سال</ion-label>
+      <ion-select #selectYearFilter
+                  okText="تائید"
+                  cancelText="لغو"
+                  [(ngModel)]="yearFilter"  (ngModelChange)="onYearFilterChange(yearFilter)">
+        <ion-option value="ALL">همه سالها</ion-option>
+        <ion-option *ngFor="let year of yearRange" [value]="year" [selected]="year==yearFilter" >{{year}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-buttons end>
+      <button ion-button outline (click)="changePageSize()">
+        <span>تعداد در صفحه</span>
+        <strong>{{pageSize}}</strong>
+      </button>
+      <button *ngIf="yearFilter" ion-button outline (click)="changeYearFilter()">
+        <span>فیلتر :</span>
+        <strong>{{yearFilter}}</strong>
+      </button>
+      <button ion-button outline icon-left (click)="detailReports()">گزارشات
+        <ion-icon name="book"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding *ngIf="model">
+    <ion-row class="gridPanel">
+      <ion-col col-12>
+        <ag-grid-angular
+          [enableSorting]="true"
+          [enableRtl]="true"
+          [enableColResize]="true"
+          [enableGroupEdit]="true"
+          domLayout='autoHeight'
+          [enableFilter]="true"
+          [sideBar]="true"
+          [pagination]="true"
+          [localeText]="gridTexts"
+          rowSelection="single"
+          [defaultColDef]="defaultColDef"
+          (selectionChanged)="onRowSelected($event)"
+          class="ag-theme-blue"
+          (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

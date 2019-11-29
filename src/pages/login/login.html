@@ -1,0 +1,40 @@
+<!-- -->
+<ion-content padding>
+  <div class="animated fadeIn auth-page">
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown logoContent">
+      <div class="logo"></div>
+      <h2>
+        شرکت ملی نفت ایران
+      </h2>
+      <h3>مدیریت نظارت بر تولید نفت و گاز</h3>
+    </div>
+
+    <!-- Login form -->
+    <form  (ngSubmit)="login()">
+      <ion-list>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start></ion-icon>
+          نام کاربری
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="userInfo.username" name="userName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start></ion-icon>
+          رمز عبور
+        </ion-label>
+        <ion-input [type]="passwordType" [(ngModel)]="userInfo.password" name="password"></ion-input>
+        <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+      </ion-item>
+      </ion-list>
+      <button ion-button icon-end type="submit" block>
+        <ion-icon name="log-in"></ion-icon>
+        ورود به سیستم</button>
+    </form>
+
+    <p text-right ion-text class="forgotPass" tappable (click)="forgotPass()">رمز عبور را فراموش کرده اید؟</p>
+  </div>
+</ion-content>

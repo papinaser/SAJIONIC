@@ -1,0 +1,53 @@
+<ng-container *ngIf="model.type=='text' || model.type=='number'">
+  <ion-item>
+    <ion-label>
+      {{model.title}}
+    </ion-label>
+    <ion-input [id]="model.id" [type]="model.type"  [required]="model.isRequired" [(ngModel)]="dataSource[model.name]" [name]="model.name">
+    </ion-input>
+  </ion-item>
+  <span *ngIf="model.unit">{{model.unit}}</span>
+</ng-container>
+<ng-container *ngIf="model.type=='date'">
+  <ion-item>
+    <ion-label>
+      {{model.title}}
+    </ion-label>
+    <dp-date-picker
+      item-content
+      dir="rtl"
+      [id]="model.id"
+      [(ngModel)]="dataSource[model.name]"
+      [name]="model.name"
+    [required]="model.isRequired"
+    firstDayOfWeek="sa"
+
+    mode="day"
+    [config]="datePickerConfig"
+    theme="dp-material">
+    </dp-date-picker>
+  </ion-item>
+</ng-container>
+<ng-container *ngIf="model.type=='list' && listItems">
+  <ion-item>
+    <ion-label>
+      {{model.title}}
+    </ion-label>
+    <ionic-selectable
+        #portComponent
+        item-content
+        [id]="model.id"
+        [name]="model.name"
+        [required]="model.isRequired"
+        [(ngModel)]="dataSource[model.name]"
+        searchPlaceholder="جستجو"
+        [focusSearchbar]="true"
+        searchFailText="آیتمی پیدا نشد"
+        [items]="listItems"
+        itemValueField="listValueId"
+        itemTextField="listValueName"
+        [canSearch]="true"
+        (onChange)="onListItemSelected($event)">
+    </ionic-selectable>
+  </ion-item>
+</ng-container>

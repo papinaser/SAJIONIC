@@ -1,0 +1,21 @@
+<!--
+  Generated template for the ShowPdfReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton class="noBackground">
+    <ion-buttons left>
+      <button ion-button clear icon-only (click)="onBack()"><ion-icon name="arrow-round-forward"></ion-icon></button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <iframe #reportViewFrame style="height: 100%;width: 100%;border: none;"  name="reportViewFrame" id="reportViewFrame" title="Report Viewer"></iframe>
+</ion-content>

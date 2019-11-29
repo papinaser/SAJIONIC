@@ -1,0 +1,34 @@
+saj-tabs{
+  /* Style the tab */
+
+  .saj-tabs {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #45b1ff;
+    padding: 0 12px !important;
+    li {
+      float: right;
+      color: map_get($colors,darken);
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 7px 12px;
+      transition: 0.3s;
+      font-size: 17px;
+      &:hover {
+        background-color: #ddd;
+      }
+      &.active {
+        background-color: #fec;
+      }
+    }
+  }
+
+
+  .tab-close {
+    color: gray;
+    text-align: right;
+    cursor: pointer;
+  }
+}
+

@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar hideBackButton class="noBackground">
+    <ion-buttons left>
+      <button ion-button clear icon-only (click)="onBack()"><ion-icon name="arrow-round-forward"></ion-icon></button>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons end>
+      <button ion-button [disabled]="!formIsValid()" icon-left outline color="secondary" (click)="onSubmit()">ذخیره <ion-icon name="done-all"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <saj-accordion *ngIf="formIsReadey==2" justPanels="true">
+    <saj-panel *ngIf="tdmsLogInfo.mainMasterParams" title="کلیات لاگ">
+      <ion-row id="koliyatParams">
+        <ion-col *ngFor="let mmp of tdmsLogInfo.mainMasterParams" col-12 col-sm-6 col-md-4>
+          <saj-input [model]="mmp" [dataSource]="ds" [token]="username" [logFormModel]="model"></saj-input>
+        </ion-col>
+      </ion-row>
+    </saj-panel>
+    <saj-panel id="detalPanel" [title]="detailLogTitle" showConfig="true"
+               (showConfigClicked)="onDetailLogConfig()" [class.zeroPR]="showMojodiats">
+      <div id="listMojodiats" [class.show]="showMojodiats">
+        <tdms-mojodiat (nodeSelected)="onMojodiatChange($event)" [nodesSource]="logMojodiats">
+
+        </tdms-mojodiat>
+      </div>
+      <div id="logDetals">
+        <saj-tabs (activeTabChanged)="onCurrentGroupChanged($event)">
+          <saj-tap *ngFor="let grp of currentMRParams.groupParams;let inx=index" [active]="inx==0" [tabTitle]="grp.groupName">
+            <saj-collapsible *ngIf="grp.masterFields"  [enable]="grp.detailFields"
+                             title="اطلاعات اصلی" [active]="true">
+              <ion-row>
+                <ion-col *ngFor="let fld of grp.masterFields" col-12 col-sm-6 col-md-4>
+                  <saj-input [model]="fld" [dataSource]="ds" [token]="username" [logFormModel]="model"></saj-input>
+                </ion-col>
+              </ion-row>
+            </saj-collapsible>
+
+            <saj-collapsible *ngIf="grp.detailFields"
+                             showDetailActions="true"
+                             (detailActionClicked)="onDetailActionClicked($event,grp)"
+                             title="لیست جزئیات" [active]="true">
+              <ag-grid-angular
+                [enableSorting]="true"
+                [enableRtl]="true"
+                [enableColResize]="true"
+                domLayout='autoHeight'
+                [enableFilter]="true"
+                [pagination]="true"
+                [localeText]="gridTexts"
+                rowSelection="single"
+                [defaultColDef]="defaultColDef"
+                (selectionChanged)="onRowSelected($event)"
+                class="ag-theme-blue"
+                [context]="contextOptions"
+                [getContextMenuItems]="getContextMenuItems"
+                (gridReady)="onGridReady($event,grp)">
+              </ag-grid-angular>
+
+            </saj-collapsible>
+
+          </saj-tap>
+        </saj-tabs>
+      </div>
+    </saj-panel>
+  </saj-accordion>
+</form>
+
+
+</ion-content>

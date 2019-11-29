@@ -1,0 +1,20 @@
+saj-tap {
+  .pane{
+    padding: 1em;
+  }
+  .saj-tab {
+    padding: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    animation: fadeEffect 1s;
+  }
+  @-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+}

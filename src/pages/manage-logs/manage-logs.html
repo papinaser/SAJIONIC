@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar hideBackButton class="noBackground">
+    <ion-buttons left>
+      <button ion-button clear icon-only (click)="onBack()"><ion-icon name="arrow-round-forward"></ion-icon></button>
+    </ion-buttons>
+    <ion-title>{{title}} </ion-title>
+    <ion-item class="none">
+      <ion-label>تعداد در صفحه</ion-label>
+      <ion-select #selectPageSize
+                  okText="تائید"
+                  cancelText="لغو"
+                  [(ngModel)]="pageSize"  (ngModelChange)="onPageSizeChanged(pageSize)">
+        <ion-option value="20" [selected]="true">20</ion-option>
+        <ion-option value="25">25</ion-option>
+        <ion-option value="50">50</ion-option>
+        <ion-option value="100">100</ion-option>
+        <ion-option value="150">150</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="none">
+      <ion-label>نحوه ثبت اطلاعات</ion-label>
+      <ion-select #selectLogEntryType
+                  required
+                  okText="تائید"
+                  cancelText="لغو"
+                  [(ngModel)]="logEntryType" (ngModelChange)="onLogEntryTypeChanged(logEntryType)">
+        <ion-option value="1" [selected]="true">فرم پویا</ion-option>
+        <ion-option value="2">فرم اکسل</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-buttons end>
+      <button ion-button clear icon-only (click)="taggleListType()"><ion-icon [name]="showListType"></ion-icon></button>
+      <button *ngIf="showListType=='grid'" ion-button outline (click)="changePageSize()">
+        <span>تعداد در صفحه</span>
+        <strong>{{pageSize}}</strong>
+      </button>
+      <button ion-button clear icon-only (click)="newLog()"><ion-icon name="add"></ion-icon></button>
+      <button ion-button clear icon-only (click)="onRefresh()"><ion-icon name="refresh"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="showListType=='list'">
+    <ion-item></ion-item>
+  </ion-list>
+  <ion-grid no-padding *ngIf="showListType=='grid' && model">
+    <ion-row class="gridPanel">
+      <ion-col col-12>
+        <ag-grid-angular
+          [enableSorting]="true"
+          [enableRtl]="true"
+          [enableColResize]="true"
+          [enableGroupEdit]="true"
+          domLayout='autoHeight'
+          [enableFilter]="true"
+          [pagination]="true"
+          [localeText]="gridTexts"
+          rowSelection="single"
+          [defaultColDef]="defaultColDef"
+          (selectionChanged)="onRowSelected($event)"
+          class="ag-theme-blue"
+          [context]="contextOptions"
+          [getContextMenuItems]="getContextMenuItems"
+          (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

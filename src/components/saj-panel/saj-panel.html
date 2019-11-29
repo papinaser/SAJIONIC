@@ -1,0 +1,13 @@
+<div class="panel panel-info">
+  <div class="panel-heading" icon-left (click)="toggle.emit()">
+    <ion-icon *ngIf="panelIcon" class="panelIcon" [name]="panelIcon"></ion-icon>
+    <span *ngIf="!showConfig">{{title}}</span>
+    <button *ngIf="showConfig" type="button" ion-button color="secondary" icon-end (click)="emitShowConfig()">{{title}} <ion-icon name="swap"></ion-icon></button>
+
+
+    <ion-icon class="headIcon" [name]="opened? 'ios-arrow-down':'ios-arrow-forward'"></ion-icon>
+  </div>
+  <div class="panel-body" *ngIf="opened">
+    <ng-content></ng-content>
+  </div>
+</div>

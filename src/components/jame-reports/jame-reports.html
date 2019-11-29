@@ -1,0 +1,9 @@
+<tree-root *ngIf="treeNodes.length>0"
+           (toggleExpanded)="onToggleExpanded($event)" [focused]="true"
+           [nodes]="treeNodes" [options]="options">
+  <ng-template #treeNodeTemplate let-node let-index="index">
+      <img style="width: 26px;height: 26px" [src]="getNodeImage(node)"/>
+      <span>{{node.data.title}}</span>
+  </ng-template>
+
+</tree-root>

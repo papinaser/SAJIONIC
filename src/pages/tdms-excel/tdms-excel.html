@@ -1,0 +1,23 @@
+<ion-header>
+
+ <page-header pageTitle="ثبت و مدیریت لاگها" showMainMenu="true"></page-header>
+
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="treeButtons">
+        <ion-buttons>
+          <button ion-button icon-right (click)="showLogForm()"><ion-icon name="browsers"></ion-icon> داده نگار</button>
+          <button ion-button  icon-right (click)="showReports()"><ion-icon name="book"></ion-icon> گزارشات </button>
+          <button ion-button  icon-right (click)="uploadLogs()"> <ion-icon name="cloud-upload"></ion-icon> آپلود لاگ در اکسل </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <tdms-mojodiat (nodeSelected)="mojodiatSelected($event)"></tdms-mojodiat>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

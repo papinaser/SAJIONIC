@@ -1,0 +1,16 @@
+<div class="accordion vertical">
+  <h3 *ngIf="!justPanels" class="title">
+    <ion-icon class="rightIcon" name="construct"></ion-icon>
+    تنظیمات
+    <ion-icon class="LeftIcon" (click)="onMinimize.emit($event)" name="return-right"></ion-icon>
+  </h3>
+  <ul>
+    <ng-content></ng-content>
+  </ul>
+  <div *ngIf="!justPanels" class="footer">
+    <button ion-button block icon-left>
+      اعمال فیلتر
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </div>
+</div>

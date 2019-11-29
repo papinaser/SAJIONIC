@@ -1,0 +1,57 @@
+saj-panel {
+  .panel {
+    padding:0;
+    overflow:hidden;
+    margin:0 0 1px;
+  }
+  .panel .panel-heading {
+    display:block;
+    font-size:16px;
+    line-height:16px;
+    background: #9BBBE8;
+    background: -moz-linear-gradient(top, #D8E6F8 0%, #9BBBE8 44%, #9BBBE8 100%);
+    background: -webkit-linear-gradient(top, #D8E6F8 0%, #9BBBE8 44%, #9BBBE8 100%);
+    background: linear-gradient(to bottom, #D8E6F8 0%, #9BBBE8 44%, #9BBBE8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D8E6F8', endColorstr='#9BBBE8',GradientType=0 );
+
+    border:1px solid #002D96;
+    color: #212121;
+    text-shadow:1px 1px 1px rgba(255,255,255,0.3);
+    font-weight:700;
+    cursor:pointer;
+    text-transform:uppercase;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    padding:10px;
+    .button-md{
+      height: 1.8em;
+      color: map_get($colors,dark);
+      font-weight: bolder;
+      margin: 0;
+    }
+  }
+  .panel .panel-heading:hover{
+    background: #2096ff;
+    color:#FFF;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.5);
+    border:1px solid #214654; /* We don't want the border to disappear on hover */
+  }
+  .panel .panel-body{
+    padding:0;
+    overflow:hidden;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    border:1px solid #002D96;
+    animation-name: fadeInDown;
+  }
+  .headIcon{
+    text-align: left;
+    float: left;
+  }
+  .panelIcon{
+    text-align: right;
+    float: right;
+    padding-left: 10px ;
+  }
+
+}

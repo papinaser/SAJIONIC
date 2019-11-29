@@ -1,0 +1,51 @@
+
+page-list-pb-dashboards {
+  ion-content {
+    background-color: #fff;
+    &::after {
+      content: "";
+      background: url("../../assets/img/bg.jpg") no-repeat;
+      background-size: cover;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
+    }
+    .biViewer {
+      width: 100%;
+      height: 100%;
+    }
+    ion-item {
+      background-color: transparent !important;
+      color: black !important;
+    }
+
+    .stickPanel {
+      background: #f6f6f6;
+      width: 15vh;
+      height: 0;
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: rotate(-90deg);
+      z-index: 999;
+      button {
+        color: white;
+        font-weight: bolder;
+      }
+    }
+
+  }
+}
+
+@media all and (max-width: 680px) {
+  ion-header {
+    .pageTitle {
+      h3 {
+        font-size: 1.2rem !important;
+      }
+    }
+  }
+}

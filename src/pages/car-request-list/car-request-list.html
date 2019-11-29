@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>درخواست خودرو از واحد ترابری</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid no-padding>
+    <ion-row class="gridHeader">
+      <ion-col>
+        <h2 class= "gridHeaderTitle">
+          لیست درخواستهای شما
+        </h2>
+      </ion-col>
+      <ion-col class="gridHeaderPageSize">
+        تعداد در صفحه  :
+        <select [(ngModel)]="pageSize" (change)="onPageSizeChanged(pageSize)" id="page-size">
+          <option value="15" selected="">15</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="150">150</option>
+        </select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-buttons>
+          <button ion-button clear icon-only (click)="addRequest()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="canShowGrid">
+    <ag-grid-angular
+      [enableSorting]="true"
+      [enableRtl]="true"
+      domLayout='autoHeight'
+      [enableFilter]="true"
+      [sideBar]="sideBar"
+      [pagination]="true"
+      [localeText]="gridTexts"
+      rowSelection="single"
+      class="ag-theme-balham"
+
+      (gridReady)="onGridReady($event)"
+    >
+    </ag-grid-angular>
+  </div>
+</ion-content>

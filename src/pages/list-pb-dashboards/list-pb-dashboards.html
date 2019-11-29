@@ -1,0 +1,52 @@
+
+<ion-header>
+  <page-header showMainMenu="true" pageTitle="داشبورد مدیران"></page-header>
+</ion-header>
+
+<ion-content>
+  <ion-grid >
+    <ion-row>
+      <div class="stickPanel" *ngIf="hidePanel" >
+        <button ion-button clear icon-left  (click)="hidePanel=false">
+          تنظیمات
+          <ion-icon name="arrow-dropup-circle"></ion-icon>
+        </button>
+      </div>
+      <ion-col *ngIf="!hidePanel" col-3>
+        <saj-accordion (onMinimize)="onMinimizeConfigPanel()">
+          <saj-panel title="لیست داشبوردها"  panelIcon="keypad">
+            <tree-root [focused]="true" *ngIf="treeNodes.length>0" [nodes]="treeNodes" [options]="options">
+              <ng-template #treeNodeTemplate let-node let-index="index">
+                <div>
+                  <ion-icon icon-left [name]="getNodeIcon(node)"></ion-icon>
+                  <span>{{node.data.title}}</span>
+                </div>
+              </ng-template>
+            </tree-root>
+          </saj-panel>
+          <saj-panel title="تعیین موجودیت" panelIcon="cube">
+           <tdms-mojodiat showCheckBox="true">
+           </tdms-mojodiat>
+          </saj-panel>
+          <saj-panel title="تعیین تاریخ" panelIcon="clock">
+            <div *ngIf="dateFilter">
+            <ion-item>
+              <ion-label>از تاریخ</ion-label>
+              <ion-range min="0" [max]="dateFilter.daysDiff" name="sdVal" [(ngModel)]="dateFilter.sdVal" (ionChange)="onDateChange()" required></ion-range>
+              <ion-label>{{dateFilter.startDate}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-range min="0" [max]="dateFilter.daysDiff" name="edVal" [(ngModel)]="dateFilter.edVal" (ionChange)="onDateChange()" required></ion-range>
+              <ion-label range-right>تا تاریخ</ion-label>
+              <ion-label range-left>{{dateFilter.endDate}}</ion-label>
+            </ion-item>
+            </div>
+          </saj-panel>
+        </saj-accordion>
+      </ion-col>
+      <ion-col  class="biViewerContent"  [attr.width-75]="!hidePanel" [attr.width-100]="hidePanel">
+        <iframe class="biViewer" *ngIf="biUrl" seamless="seamless" frameborder="0" [src]="biUrl"></iframe>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

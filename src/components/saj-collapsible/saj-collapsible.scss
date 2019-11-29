@@ -1,0 +1,46 @@
+saj-collapsible {
+  .collapsible {
+    background-color: #255a88;
+    color: map_get($colors,light);
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: right;
+    outline: none;
+    font-size: 1.8rem;
+    z-index: 1;
+    padding: 2px 7px;
+    .gridActions{
+      z-index: 100;
+      button{
+        color: black;
+        font-size: 1.2rem !important;
+        margin: 0 !important;
+      }
+    }
+  }
+  .active, .collapsible:hover {
+    background-color: #2e82b9;
+  }
+  .content {
+    padding: 0;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+  .block{
+    display: block;
+  }
+
+  .collapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: left;
+    margin-left: 5px;
+  }
+
+  .active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
+}

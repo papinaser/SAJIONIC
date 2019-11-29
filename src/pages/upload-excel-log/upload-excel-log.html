@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>آپلود لاگ با فایل اکسل/اکس ام ال</ion-title>
+    <ion-buttons end>
+      <button *ngIf="lastErr" ion-button outline color="danger" (click)="showLastError()">آخرین خطا</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="modal">
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+  <ion-list>
+    <ion-list-header>
+      <h2>تعیین فایل اکسل</h2>
+    </ion-list-header>
+    <ion-item>
+      <ion-input type="file" required accept=".xlsm,.xlsx,.xls" id="excelFile" (change)="onExcelFileSelected($event)"></ion-input>
+    </ion-item>
+    <ion-list-header>
+      <h2>تعیین اکس ام ال ها</h2>
+    </ion-list-header>
+    <ion-item>
+      <ion-input name="xml1File" accept=".xml" type="file" id="xml1File" (change)="onXml1FileSelected($event)" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="xml2File" type="file" accept=".xml" id="xml2File" (change)="onXml2FileSelected($event)"></ion-input>
+    </ion-item>
+  </ion-list>
+    <ion-footer>
+      <ion-row>
+        <ion-col>
+          <button ion-button [disabled]="!isFormValid()" type="submit" color="primary" block>تائید</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button type="button" color="danger" (click)="onCancel()" block>لغو</button>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </form>
+</ion-content>

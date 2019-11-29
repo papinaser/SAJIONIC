@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button clear icon-only (click)="onBack()"><ion-icon name="arrow-round-forward"></ion-icon></button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button *ngIf="lastError" ion-button color="danger" type="button" (click)="showLastError()">نمایش آخرین خطا</button>
+      <button ion-button outline icon-only (click)="onSubmit()"><ion-icon name="checkmark-circle"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <div *ngIf="excelUrl">
+  <form #excelLogform id="excelLogform" name="excelLogform" target="excelLogFrame"
+        [action]="excelUrl" method="post">
+    <input name="access_token" value="[token]" type="hidden" />
+    <input name="access_token_ttl" value="[token_ttl]" type="hidden" />
+  </form>
+  <iframe #excelLogFrame name="excelLogFrame" id="excelLogFrame" title="TDMS Log Form" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-top-navigation allow-scripts"></iframe>
+  </div>
+</ion-content>

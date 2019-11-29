@@ -1,0 +1,28 @@
+html,body{
+  height: 100%;
+  .promptLarge{
+    .alert-wrapper{
+      min-width: 460px !important;
+    }
+  }
+  page-excel-form {
+    height: 100%;
+    width: 100%;
+    ion-header{
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    ion-content{
+      .fixed-content,.scroll-content{
+        margin-top: 0 !important;
+      }
+    }
+
+    form{
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+

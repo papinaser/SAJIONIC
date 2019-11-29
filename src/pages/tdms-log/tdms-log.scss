@@ -1,0 +1,31 @@
+page-tdms-log {
+  #detalPanel{
+    overflow:auto;
+  }
+  #listMojodiats{
+    width: 1px;
+    height: 100%;
+    background-color: #CBDCF1;
+    position: absolute;
+    z-index: 1;
+    box-shadow: -5px 5px 20px 5px #7b7b7b;
+    opacity: 0;
+    transition: all .50s ease;
+    overflow:auto;
+  }
+  #listMojodiats.show{
+    display: block !important;
+    opacity: 1;
+    width: 300px;
+  }
+  #logDetals{
+    width: 100%;
+  }
+
+  .zeroPR{
+    .panel-body{
+      padding-right: 0;
+    }
+  }
+
+}

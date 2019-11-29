@@ -1,0 +1,59 @@
+<ion-header>
+  <page-header  [pageTitle]="pageTitle" showMainMenu="true" [showCloseMenu]="showReportState" (closeClicked)="onCloseReportState()"></page-header>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col  col-5 [className]="showReportState && 'hide'">
+        <ion-row class="datePickerOnTop">
+          <ion-col col-1>
+            <span>از تاریخ</span>
+          </ion-col>
+          <ion-col>
+            <dp-date-picker
+              [(ngModel)]="startDate"
+              required="true"
+              firstDayOfWeek="sa"
+              mode="day"
+              [maxDate]="maxDate"
+              required="true"
+              [config]="datePickerConfig"
+              theme="dp-material">
+            </dp-date-picker>
+          </ion-col>
+            <ion-col col-1>
+              <span>تا تاریخ</span>
+            </ion-col>
+            <ion-col>
+              <dp-date-picker
+                [(ngModel)]="endDate"
+                dir="rtl"
+                required="true"
+                firstDayOfWeek="sa"
+                [maxDate]="maxDate"
+                mode="day"
+                [config]="datePickerConfig"
+                theme="dp-material">
+              </dp-date-picker>
+            </ion-col>
+            <ion-col>
+              <button ion-button block color="primary" [disabled]="!isFormValid()" (click)="onInitReport()">نمایش گزارش</button>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <jame-reports (nodeSelected)="onReportSelectted($event)"></jame-reports>
+        </ion-row>
+
+      </ion-col>
+
+      <ion-col [attr.col-12]="showReportState ? '' : null">
+        <iframe #reportViewFrame style="height: 100%;width: 100%;border: none;"  name="reportViewFrame" id="reportViewFrame" title="Report Viewer"></iframe>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>
